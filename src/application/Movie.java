@@ -100,9 +100,11 @@ public class Movie {
 				System.out.println(str[0] + " " + "Movie name: " + str[1] + " " + "Rating: " + str[2] + " " + "Release-date: " + str[3] + " " + "Duration: " + str[4] + " " + "Genre: " + str[5]);
 			}
 			readFile.close();
-		} catch (FileNotFoundException e) {
+		} 
+		catch (FileNotFoundException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -136,7 +138,6 @@ public class Movie {
 			e.printStackTrace();
 		}
 		 catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 		}
 	}

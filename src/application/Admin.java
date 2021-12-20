@@ -54,9 +54,8 @@ public class Admin {
 	{
 		Admin a1;
 		a1=new Admin();
-		//a1.EditMovieDetails("7.4","7.5");
-		//a1.AddMovieSchedule(06,"galwakdi","?","07-01-2022","02 hr 10min","drama");
-		
+		//a1.EditMovieDetails("8.2","7.5");
+		//a1.AddMovieSchedule(06,"galwakdi","?","07-01-2022","02 hr 10min","drama");	
 	}
 	
 }

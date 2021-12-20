@@ -4,7 +4,6 @@ import java.sql.*;
 
 public class Database {
 
-	@SuppressWarnings("unused")
 	public static void main(String[] args) throws SQLException {
 		
 		/*try {
@@ -35,36 +34,56 @@ public class Database {
 
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
-        } catch (ClassNotFoundException e) {
+        }
+        catch (ClassNotFoundException e) {
 
             System.out.println("Where is your Oracle JDBC Driver?");
             e.printStackTrace();
             return;
-
         }
 
         System.out.println("Oracle JDBC Driver Registered!");
 
-        Connection connection = null;
+        Connection con = null;
 
         try {
-
-			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@DESKTOP-EC2RIA7:1521:XE","hello","12345");
-
-        } catch (SQLException e) {
-
+			con=DriverManager.getConnection("jdbc:oracle:thin:@DESKTOP-EC2RIA7:1521:XE","hello","12345");
+        } 
+        catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
             e.printStackTrace();
             return;
-
         }
 
-        if (connection != null) {
+        if (con != null) 
+        {
             System.out.println("You made it, take control your database now!");
-        } else {
+        } 
+        else {
             System.out.println("Failed to make connection!");
-        }
-
+        }/*
+		Statement temp1=con.createStatement();
+		ResultSet temp2=temp1.executeQuery("select * from hello");
+		while(temp2.next())
+		{
+			int id=temp2.getInt(1);
+			String n1=temp2.getString(2);
+			System.out.println(id + " " + n1);
+		}*/
+        String sql="insert into hello values (05,'why')";
+        PreparedStatement statement=con.prepareStatement(sql);
+        int temp=statement.executeUpdate();
+        if(temp>0)
+        	System.out.println("Added value");
+		Statement temp1=con.createStatement();
+		ResultSet temp2=temp1.executeQuery("select * from hello");
+		while(temp2.next())
+		{
+			int id=temp2.getInt(1);
+			String n1=temp2.getString(2);
+			System.out.println(id + " " + n1);
+		}
+		con.close();
 	}
 
 }

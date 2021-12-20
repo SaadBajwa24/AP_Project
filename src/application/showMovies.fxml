@@ -2,12 +2,14 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller">
    <children>
       <VBox prefHeight="500.0" prefWidth="191.0" style="-fx-background-color: #821458;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,10 +22,20 @@
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBackLogin" onMouseExited="#backButtonOriginal" onMouseMoved="#backButtonDarker" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #821458;" text="back" textFill="WHITE" />
          </children>
       </VBox>
-      <Label layoutX="372.0" layoutY="33.0" text="show movies" textFill="WHITE">
+      <Label layoutX="446.0" layoutY="24.0" text="show movies" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
+      <TableView fx:id="movieTable" layoutX="191.0" layoutY="68.0" prefHeight="433.0" prefWidth="658.0">
+         <columns>
+            <TableColumn fx:id="colid" prefWidth="73.99998474121094" text="id" />
+            <TableColumn fx:id="colName" prefWidth="158.66665649414062" text="name" />
+            <TableColumn fx:id="colRating" prefWidth="60.0" text="rating" />
+            <TableColumn fx:id="colReleaseDate" prefWidth="102.00003051757812" text="release date" />
+            <TableColumn fx:id="colDuration" prefWidth="94.6666259765625" text="duration" />
+            <TableColumn fx:id="colGenre" prefWidth="168.66668701171875" text="genre" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

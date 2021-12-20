@@ -8,7 +8,6 @@ import java.io.IOException;
 
 public class Customer {
 
-	private int customerid;
 	private String username;
 	private String password;
 	private String firstname;
@@ -20,7 +19,6 @@ public class Customer {
 	
 	Customer()
 	{
-		customerid=0;
 		username="";
 		password="";
 		firstname="";
@@ -30,9 +28,8 @@ public class Customer {
 		email="";
 		address="";
 	}
-	Customer(int id,String a,String b,String c,String d,String e,String f,String g,String h)
+	Customer(String a,String b,String c,String d,String e,String f,String g,String h)
 	{
-		customerid=id;
 		username=a;
 		password=b;
 		firstname=c;
@@ -42,9 +39,8 @@ public class Customer {
 		email=g;
 		address=h;
 	}
-	public void InitializeCustomer(int id,String a,String b,String c,String d,String e,String f,String g,String h)
+	public void InitializeCustomer(String a,String b,String c,String d,String e,String f,String g,String h)
 	{
-		customerid=id;
 		username=a;
 		password=b;
 		firstname=c;
@@ -56,7 +52,6 @@ public class Customer {
 	}
 	public void DisplayDetails()
 	{
-		System.out.println("The customer id is: " + customerid);
 		System.out.println("The customer username is: " + username);
 		System.out.println("The customer password is: " + password);
 		System.out.println("The customer firstname is: " + firstname);
@@ -66,10 +61,6 @@ public class Customer {
 		System.out.println("The customer email is: " + email);
 		System.out.println("The customer address is: " + address);
 	}
-	public void setcustomerid(int a)
-	{
-		customerid=a;
-	}
 	public void setusername(String a)
 	{
 		username=a;
@@ -77,10 +68,6 @@ public class Customer {
 	public void setpassword(String a)
 	{
 		password=a;
-	}
-	public int getcustomerid()
-	{
-		return customerid;
 	}
 	public String getusername()
 	{
@@ -90,52 +77,63 @@ public class Customer {
 	{
 		return password;
 	}
-	public String getFirstname() {
+	public String getFirstname() 
+	{
 		return firstname;
 	}
-	public void setFirstname(String firstname) {
+	public void setFirstname(String firstname) 
+	{
 		this.firstname = firstname;
 	}
-	public String getLastname() {
+	public String getLastname()
+	{
 		return lastname;
 	}
-	public void setLastname(String lastname) {
+	public void setLastname(String lastname)
+	{
 		this.lastname = lastname;
 	}
 	public String getCnic() {
 		return cnic;
 	}
-	public void setCnic(String cnic) {
+	public void setCnic(String cnic) 
+	{
 		this.cnic = cnic;
 	}
-	public String getPhonenumber() {
+	public String getPhonenumber()
+	{
 		return phonenumber;
 	}
-	public void setPhonenumber(String phonenumber) {
+	public void setPhonenumber(String phonenumber) 
+	{
 		this.phonenumber = phonenumber;
 	}
-	public String getEmail() {
+	public String getEmail()
+	{
 		return email;
 	}
-	public void setEmail(String email) {
+	public void setEmail(String email) 
+	{
 		this.email = email;
 	}
-	public String getAddress() {
+	public String getAddress()
+	{
 		return address;
 	}
-	public void setAddress(String address) {
+	public void setAddress(String address)
+	{
 		this.address = address;
 	}
 	public void RegisterUser(String username2,String password2,String firstname2,String lastname2 ,String cnic2,String phonenumber2,String email2,String address2) 
 	{
-		username=username2;
+		/*username=username2;
 		password=password2;
 		firstname=firstname2;
 		lastname=lastname2;
 		cnic=cnic2;
 		phonenumber=phonenumber2;
 		email=email2;
-		address=address2;
+		address=address2;*/
 		try {
 			FileWriter myWriter = new FileWriter("D:\\i190448_i191974_i190746_cinema_System\\CinemaSystem\\src\\application\\customerdetails.txt",true);
 			myWriter.write(username2 + "," + password2 + "," + firstname2 + "," + lastname2 + "," + cnic2 + "," + phonenumber2 + "," + email2 + "," +address2 + "\n");
@@ -193,9 +191,9 @@ public class Customer {
 			System.out.println("Found");
 		else
 			System.out.println("Not Found");
-		Movie m1;
+		/*Movie m1;
 		m1=new Movie();
-		m1.GetMovieDetails();
+		m1.GetMovieDetails();*/
 	}
 	
 }

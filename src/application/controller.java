@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -54,7 +56,7 @@ public class controller {
 		String username=usernameBox.getText().toString();
 		String password=passwordBox.getText().toString();
 		customer=new Customer();
-		 if(customer.Login(username,password)) {
+		 if(customer.VerifyUser(username,password)) {
 			 loginMsg.setText("Welcome!!");
 			 Main m=new Main();
 			 m.changeScenes("dashboard.fxml");
@@ -64,9 +66,6 @@ public class controller {
 			loginMsg.setText("incorrect username or password");
 			 
 		 }
-		 
-		 
-		 
 	 }
 	 
 	 //********************SIGN IN PAGE***************************//
@@ -111,9 +110,9 @@ public class controller {
 			 alert.setContentText("boxes cant be left empty");
 			 alert.showAndWait();
 		 }
-		 else {
-			 
-			 
+		 
+		 else 
+		 {
 			 Main m=new Main();
 			 customer=new Customer();
 			 String password,name,cnic,email,address,fname,lname,phonenumber = null;
@@ -246,6 +245,27 @@ public class controller {
 	 //for show movies button
 
 	 @FXML
+	 private TableView<String> MovieTable;
+
+	 @FXML
+	 private TableColumn<Movie,Integer> movieid;
+	 
+	 @FXML
+	 private TableColumn<Movie,String> movieduration;
+
+	 @FXML
+	 private TableColumn<Movie,String> moviegenre;
+
+	 @FXML
+	 private TableColumn<Movie,String> moviename;
+
+	 @FXML
+	 private TableColumn<Movie,String> movierating;
+
+	 @FXML
+	 private TableColumn<Movie,String> moviereleasedate;
+	 
+	 @FXML
 	 void showButtonDarker(MouseEvent event) {	//button gets darker when highlighted
 		 showMovieButton.setStyle("-fx-background-color: #410a2e;");
 	 }
@@ -257,15 +277,40 @@ public class controller {
 	 
 	 @FXML
 	 void goToShowMovies(ActionEvent event) throws IOException {
+		 
 		 Main m=new Main();
 		 m.changeScenes("showMovies.fxml");
 		 //shows.displayall();
 	 }
 	 
 	 
-	 
-	 
 	 //for show bookings
+	 
+	 @FXML
+	 private TableView<String> BookingTable;
+	 
+
+	 @FXML
+	 private TableColumn<Movie,Integer> colid;
+	 
+	 @FXML
+	 private TableColumn<Movie,String> colDuration;
+
+	 @FXML
+	 private TableColumn<Movie,String> colGenre;
+
+	 @FXML
+	 private TableColumn<Movie,String> colName;
+
+	 @FXML
+	 private TableColumn<Movie,String> colRating;
+
+	 @FXML
+	 private TableColumn<Movie,String> colReleaseDate;
+
+	 
+
+	 
 	 @FXML
 	 void showBgoOriginal(MouseEvent event) {
 		 showBookings.setStyle("-fx-background-color: #821458;");
@@ -278,6 +323,8 @@ public class controller {
 
 	 @FXML
 	 void goToShowBookings(ActionEvent event) throws IOException {
+		 Booking temp=new Booking();
+		 temp.GetAllBooking();
 		 Main m=new Main();
 		 m.changeScenes("showBookings.fxml");
 		 
