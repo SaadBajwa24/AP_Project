@@ -27,14 +27,13 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <TableView fx:id="movieTable" layoutX="191.0" layoutY="68.0" prefHeight="433.0" prefWidth="658.0">
+      <TableView fx:id="MovieTable" layoutX="191.0" layoutY="68.0" prefHeight="433.0" prefWidth="658.0">
          <columns>
-            <TableColumn fx:id="colid" prefWidth="73.99998474121094" text="id" />
-            <TableColumn fx:id="colName" prefWidth="158.66665649414062" text="name" />
-            <TableColumn fx:id="colRating" prefWidth="60.0" text="rating" />
-            <TableColumn fx:id="colReleaseDate" prefWidth="102.00003051757812" text="release date" />
-            <TableColumn fx:id="colDuration" prefWidth="94.6666259765625" text="duration" />
-            <TableColumn fx:id="colGenre" prefWidth="168.66668701171875" text="genre" />
+            <TableColumn fx:id="moviename2" prefWidth="158.66665649414062" text="name" />
+            <TableColumn fx:id="movierating" prefWidth="60.0" text="rating" />
+            <TableColumn fx:id="moviereleasedate" prefWidth="102.00003051757812" text="release date" />
+            <TableColumn fx:id="movieduration" prefWidth="94.6666259765625" text="duration" />
+            <TableColumn fx:id="moviegenre" prefWidth="168.66668701171875" text="genre" />
          </columns>
       </TableView>
    </children>

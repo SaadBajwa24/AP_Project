@@ -1,4 +1,4 @@
-package application;
+package TestCases;
 
 import java.util.Iterator;
 import java.util.List;
@@ -18,7 +18,7 @@ import javafx.collections.ObservableList;
 
 @Entity
 public class Booking {
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int bookingid;
@@ -181,26 +181,25 @@ public class Booking {
 		b1.setCustomerid(2);
 		session.save(b1);
 		trans.commit();*/
-		/*Booking b1=new Booking();
+		Booking b1=new Booking();
 		ObservableList<Booking> templist=FXCollections.observableArrayList();
 		templist=b1.GetBookingList();
 		for(Booking temp:templist)
 		{
 			System.out.println("temp is: " + temp);
-		}*/
-		Booking b1=new Booking();
-		//b1.AddBooking(1,7,1);
-		//b1.AddBooking(4,5,6);
-		//b1.AddBooking(7,8,9);
-		//b1.GetAllBooking();*/
+		}
+		/*b1.AddBooking(1,2,3);
+		b1.AddBooking(4,5,6);
+		b1.AddBooking(7,8,9);
+		b1.GetAllBooking();*/
 		//b1.UpdateBooking(2,12,10);
-		b1.GetAllBooking();
-		//b1.DeleteBooking(4);
+		//b1.GetAllBooking();
+		//b1.DeleteBooking(3);
 		//b1.GetAllBooking();
 		//b1.GetAllBooking();
 		//b1.AddBooking(4,5);
 		//b1.AddBooking(8,9);
 		//b1.GetBooking(1);
 	}
-	
+
 }

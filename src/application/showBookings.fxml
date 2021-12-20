@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller">
    <children>
       <VBox prefHeight="500.0" prefWidth="191.0" style="-fx-background-color: #821458;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,10 +21,18 @@
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBackLogin" onMouseExited="#backButtonOriginal" onMouseMoved="#backButtonDarker" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #821458;" text="back" textFill="WHITE" />
          </children>
       </VBox>
-      <Label layoutX="366.0" layoutY="42.0" text="show bookings" textFill="WHITE">
+      <Label layoutX="450.0" layoutY="27.0" text="show bookings" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
+      <TableView fx:id="BookingTable" layoutX="191.0" layoutY="78.0" prefHeight="423.0" prefWidth="659.0">
+        <columns>
+          <TableColumn fx:id="bookingid1" prefWidth="151.3333282470703" text="booking id" />
+          <TableColumn fx:id="showid1" prefWidth="180.66671752929688" text="show id" />
+            <TableColumn fx:id="customerid1" prefWidth="169.33331298828125" text="customer id" />
+            <TableColumn fx:id="seats1" prefWidth="156.66668701171875" text="seat no" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

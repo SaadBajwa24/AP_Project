@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" styleClass="body" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#start" prefHeight="500.0" prefWidth="850.0" styleClass="body" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller">
    <bottom>
       <Pane prefHeight="70.0" prefWidth="700.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
    </bottom>
@@ -35,6 +35,11 @@
                   <Font size="16.0" />
                </font>
             </Label>
+            <Text fx:id="text" fill="WHITE" layoutX="117.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="194.4017333984375">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </center>

@@ -1,6 +1,19 @@
 package application;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -9,25 +22,32 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
+import javafx.application.Platform;
 
 @SuppressWarnings("unused")
-public class controller {
+public class controller implements Initializable{
 	
 	private Admin admin;
 	private Customer customer;
 	private Movie movie;
 	private Show show;
 	
-//	controller(){
-//
-//		admin=new Admin();
-//		customer=new Customer();
-//		movie=new Movie();
-//		show=new Show();
-//		
-//	}
+	//********THREADING**********//
+	@FXML 
+	private Text text;	
+	textAnimator textAn;
+ 
+	 @FXML
+	 void start(MouseEvent event) {
+		 Thread thread = new Thread(textAn);
+	     thread.start();
+	 }
+	
+
 	//*********************LOGIN PAGE******************************//
 	
 	 @FXML
@@ -52,9 +72,18 @@ public class controller {
 	 }
 
 	 @FXML
-	 void signInUser(ActionEvent event) throws IOException {
+	 void signInUser(ActionEvent event) throws IOException , InvalidCharacterException  {
 		String username=usernameBox.getText().toString();
 		String password=passwordBox.getText().toString();
+		Pattern p = Pattern.compile("[^A-Za-z0-9]");
+	    Matcher m1 = p.matcher(username);
+	    Matcher m2 = p.matcher(password);
+	    boolean b1 = m1.find();
+	    boolean b2 = m2.find();
+	    if(b1 || b2) 
+	    {
+	    	throw new InvalidCharacterException("Special Characters are not Allowed");
+	    }
 		customer=new Customer();
 		 if(customer.VerifyUser(username,password)) {
 			 loginMsg.setText("Welcome!!");
@@ -62,9 +91,9 @@ public class controller {
 			 m.changeScenes("dashboard.fxml");
 		 }
 		 else {
-			 
+			usernameBox.clear();
+			passwordBox.clear();
 			loginMsg.setText("incorrect username or password");
-			 
 		 }
 	 }
 	 
@@ -138,7 +167,7 @@ public class controller {
 	 //primaryStage.setMaximized(true);	//for when maximizing stage
 	 
 	 
-	 //*******************************DASHBOX****************************************//
+	 //*******************************DASHBORD****************************************//
 	 
 	 @FXML
 	 private Button bookButton;
@@ -183,14 +212,7 @@ public class controller {
 		 
 		 //dynamicView.loadBoarderCenter(borderpane,"booking.fxml");
 	 }
-
-	   
-	 
-	 
-	 
-	 
-	 
-	 
+ 
 	 //for cancel button
 	 
 	 @FXML
@@ -209,13 +231,7 @@ public class controller {
 		 m.changeScenes("cancelBooking.fxml");
 		 
 		 //customer.cancelBooking(bookingId,showId);
-	 }
-	 
-	 
-	 
-	 
-	 
-	 
+	 }	 
 	 
 	 //for make payment button
 
@@ -238,17 +254,13 @@ public class controller {
 	 }
 	 
 	 
-	 
-	 
-	 
-	 
 	 //for show movies button
 
 	 @FXML
-	 private TableView<String> MovieTable;
+	 private TableView<Movie> MovieTable;
 
-	 @FXML
-	 private TableColumn<Movie,Integer> movieid;
+	 //@FXML
+	 //private TableColumn<Movie,Integer> movieid2;
 	 
 	 @FXML
 	 private TableColumn<Movie,String> movieduration;
@@ -257,13 +269,55 @@ public class controller {
 	 private TableColumn<Movie,String> moviegenre;
 
 	 @FXML
-	 private TableColumn<Movie,String> moviename;
+	 private TableColumn<Movie,String> moviename2;
 
 	 @FXML
 	 private TableColumn<Movie,String> movierating;
 
 	 @FXML
 	 private TableColumn<Movie,String> moviereleasedate;
+	 
+	 ObservableList<Movie> oblist=FXCollections.observableArrayList();
+	 
+	 /*
+	 @Override
+	 public void initialize(URL url, ResourceBundle rb) 
+	 {
+		 try {
+			 
+			 TextOutput textOutput=new TextOutput() {
+					@Override		
+					public void writeText(String textOut) {
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								text.setText(textOut);
+							}
+						});
+					}
+			};
+			
+			textAn=new textAnimator("Movie Ticketing System",0, textOutput);
+			 
+			 movieid2.setCellValueFactory(new PropertyValueFactory<Movie,Integer>("movieid"));
+			 moviename2.setCellValueFactory(new PropertyValueFactory<Movie,String>("moviename"));
+			 movierating.setCellValueFactory(new PropertyValueFactory<Movie,String>("rating"));
+			 moviereleasedate.setCellValueFactory(new PropertyValueFactory<Movie,String>("releasedate"));
+			 movieduration.setCellValueFactory(new PropertyValueFactory<Movie,String>("duration"));
+			 moviegenre.setCellValueFactory(new PropertyValueFactory<Movie,String>("genre"));
+			 Movie m1=new Movie();
+			 oblist=m1.GetMovieList();
+			 MovieTable.setItems(oblist);
+			 
+			 //MovieTable.getItems().setAll(oblist);
+		 }
+		 catch (Exception e1)
+		 {
+		 }
+		 //MovieTable.setItems(oblist);
+		 //BookingTable.getItems().setAll(templist);
+	 }
+	 */
 	 
 	 @FXML
 	 void showButtonDarker(MouseEvent event) {	//button gets darker when highlighted
@@ -287,29 +341,79 @@ public class controller {
 	 //for show bookings
 	 
 	 @FXML
-	 private TableView<String> BookingTable;
-	 
-
-	 @FXML
-	 private TableColumn<Movie,Integer> colid;
+	 private TableView<Booking> BookingTable;
 	 
 	 @FXML
-	 private TableColumn<Movie,String> colDuration;
+	 private TableColumn<Booking,Integer> bookingid1;
+	 
+	 @FXML
+	 private TableColumn<Booking,Integer> showid1;
 
 	 @FXML
-	 private TableColumn<Movie,String> colGenre;
+	 private TableColumn<Booking,Integer> customerid1;
 
 	 @FXML
-	 private TableColumn<Movie,String> colName;
-
-	 @FXML
-	 private TableColumn<Movie,String> colRating;
-
-	 @FXML
-	 private TableColumn<Movie,String> colReleaseDate;
+	 private TableColumn<Booking,Integer> seats1;
 
 	 
-
+	 ObservableList<Booking> templist=FXCollections.observableArrayList();
+	 
+	 
+	 @Override
+	 public void initialize(URL url, ResourceBundle rb) 
+	 {
+		 try {
+		 
+		 		TextOutput textOutput=new TextOutput() {
+				@Override		
+				public void writeText(String textOut) {
+				Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								text.setText(textOut);
+							}
+						});
+					}
+			};
+			
+			textAn=new textAnimator("Movie Ticketing System",0, textOutput);
+		 
+			 /*bookingid1.setCellValueFactory(new PropertyValueFactory<Booking,Integer>("bookingid"));
+			 showid1.setCellValueFactory(new PropertyValueFactory<Booking,Integer>("showid"));
+			 customerid1.setCellValueFactory(new PropertyValueFactory<Booking,Integer>("customerid"));
+			 seats1.setCellValueFactory(new PropertyValueFactory<Booking,Integer>("seats"));
+			 Booking b1=new Booking();
+			 templist=b1.GetBookingList();
+			 BookingTable.setItems(templist);*/
+			 
+			 //movieid2.setCellValueFactory(new PropertyValueFactory<Movie,Integer>("movieid"));
+			 moviename2.setCellValueFactory(new PropertyValueFactory<Movie,String>("moviename"));
+			 movierating.setCellValueFactory(new PropertyValueFactory<Movie,String>("rating"));
+			 moviereleasedate.setCellValueFactory(new PropertyValueFactory<Movie,String>("releasedate"));
+			 movieduration.setCellValueFactory(new PropertyValueFactory<Movie,String>("duration"));
+			 moviegenre.setCellValueFactory(new PropertyValueFactory<Movie,String>("genre"));
+			 Movie m1=new Movie();
+			 oblist=m1.GetMovieList();
+			 MovieTable.setItems(oblist);
+			 
+			 /*
+			 movieid2.setCellValueFactory(new PropertyValueFactory<Movie,Integer>("movieid"));
+			 moviename2.setCellValueFactory(new PropertyValueFactory<Movie,String>("moviename"));
+			 movierating.setCellValueFactory(new PropertyValueFactory<Movie,String>("rating"));
+			 moviereleasedate.setCellValueFactory(new PropertyValueFactory<Movie,String>("releasedate"));
+			 movieduration.setCellValueFactory(new PropertyValueFactory<Movie,String>("duration"));
+			 moviegenre.setCellValueFactory(new PropertyValueFactory<Movie,String>("genre"));
+			 Movie m1=new Movie();
+			 oblist=m1.GetMovieList();
+			 MovieTable.setItems(oblist);*/
+			 //MovieTable.getItems().setAll(oblist);
+		 }
+		 catch (Exception e1)
+		 {
+		 }
+		 //MovieTable.setItems(oblist);
+		 //BookingTable.getItems().setAll(templist);
+	 }
 	 
 	 @FXML
 	 void showBgoOriginal(MouseEvent event) {
@@ -323,17 +427,12 @@ public class controller {
 
 	 @FXML
 	 void goToShowBookings(ActionEvent event) throws IOException {
-		 Booking temp=new Booking();
-		 temp.GetAllBooking();
+		 //Booking temp=new Booking();
+		 //temp.GetAllBooking();
 		 Main m=new Main();
 		 m.changeScenes("showBookings.fxml");
-		 
 		 //customer.showBookings(customerID);
 	 }
-	 
-	 
-	 
-	 
 	 
 	 
 	 //for back button

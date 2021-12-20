@@ -8,7 +8,11 @@ module CinemaSystem {
 	requires javafx.graphics;
 	requires javafx.base;
 	requires java.transaction;
+	requires junit;
+	requires java.desktop;
+	requires javafx.media;
 	
+	exports application;
 	opens application to hibernate.jpa,javafx.graphics, javafx.fxml, org.hibernate.orm.core;
 
 }

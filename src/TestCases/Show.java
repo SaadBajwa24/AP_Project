@@ -1,4 +1,4 @@
-package application;
+package TestCases;
 
 import java.sql.*;
 
@@ -171,13 +171,14 @@ public class Show {
 	{
 		Show s1;
 		s1=new Show();
-		//s1.AddShow(3,6,4,"9:00 pm",800);
+		//s1.AddShow(2,2,2,"6:30 pm",800);
 		//s1.GetShow();
-		//s1.UpdateShowTime("08:00 pm",2);
+		//s1.UpdateShowTime("07:00 pm",2);
 		//s1.DeleteShow(2);
-		//s1.UpdateShowTheatreid(4,3);
-		//s1.UpdateShowMovieid(1,3);
+		//s1.UpdateShowTheatreid(4,2);
+		//s1.UpdateShowMovieid(6,2);
 		s1.GetShow();
 	}
 
+	
 }

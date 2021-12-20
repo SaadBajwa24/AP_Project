@@ -1,6 +1,8 @@
-package application;
+package TestCases;
+
 
 public class Admin {
+
 
 	private String username;
 	private String password;
@@ -41,23 +43,21 @@ public class Admin {
 		Movie m1;
 		m1=new Movie();
 		m1.AddMovie(a,b,c,d,e,f);
-		System.out.println("Added Movie");
 	}
 	public void EditMovieDetails(String old,String newdata)
 	{
 		Movie m1;
 		m1=new Movie();
 		m1.EditMovie(old, newdata);
-		System.out.println("Edited Movie");
 	}
-	
+	/*
 	@SuppressWarnings("unused")
 	public static void main(String args[])
 	{
 		Admin a1;
 		a1=new Admin();
-		//a1.EditMovieDetails("0.0","7.5");
-		//a1.AddMovieSchedule(06,"galwakdi","0.0","07-01-2022","02 hr 10min","drama");	
-	}
-	
+		//a1.EditMovieDetails("8.2","7.5");
+		//a1.AddMovieSchedule(06,"galwakdi","?","07-01-2022","02 hr 10min","drama");	
+	}*/
 }
+

@@ -1,4 +1,4 @@
-package application;
+package TestCases;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -126,7 +126,7 @@ public class Movie {
 			while((line=readFile.readLine())!=null) {
 				Movie temp=new Movie();
 				String[] str=line.split(",");
-				//System.out.println(str[0] + " " + "Movie name: " + str[1] + " " + "Rating: " + str[2] + " " + "Release-date: " + str[3] + " " + "Duration: " + str[4] + " " + "Genre: " + str[5]);
+				System.out.println(str[0] + " " + "Movie name: " + str[1] + " " + "Rating: " + str[2] + " " + "Release-date: " + str[3] + " " + "Duration: " + str[4] + " " + "Genre: " + str[5]);
 				temp.setmovieid(Integer.parseInt(str[0]));
 				temp.setMoviename(str[1]);
 				temp.setRating(str[2]);
