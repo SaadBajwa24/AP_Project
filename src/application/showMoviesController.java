@@ -45,8 +45,7 @@ public class showMoviesController implements Initializable{
 	private Button showBookings;
 	@FXML
 	private Button backButton;
-	
-	
+		
 	
 	@FXML
 	private TableView<Movie> MovieTable;
