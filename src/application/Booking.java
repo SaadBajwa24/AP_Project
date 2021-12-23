@@ -212,7 +212,7 @@ public class Booking {
 		}*/
 		Booking b1=new Booking();
 		//if(b1.GetBookingId(8))
-			//System.out.println("Hello");
+		//System.out.println("Hello");
 		//b1.GetBookingId(8);
 		//b1.DeleteBooking(7);
 		//b1.DeleteBooking(2);
