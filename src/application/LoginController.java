@@ -39,6 +39,7 @@ public class LoginController implements Initializable {
 	};
 	
 	textAn=new textAnimator("Movie Ticketing System",0, textOutput);
+	
 	}
 	
 	
@@ -67,9 +68,18 @@ public class LoginController implements Initializable {
 	 private Label loginMsg;
 	 
 	 @FXML
+	 private Button adminLogin;
+	 
+	 @FXML
 	 void registerUser(ActionEvent event) throws IOException {
 		Main m=new Main();
 		m.changeScenes("register.fxml");
+	 }
+	 
+	 @FXML
+	 void loginAsAdmin(ActionEvent event) throws IOException {
+		 Main m=new Main();
+		 m.changeScenes("admin.fxml");
 	 }
 
 	 @FXML

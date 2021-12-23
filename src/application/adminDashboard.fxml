@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.adminDashboardController">
+   <children>
+      <VBox prefHeight="500.0" prefWidth="191.0" style="-fx-background-color: #821458;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="81.0" prefWidth="191.0" />
+            <Button fx:id="addMovie" mnemonicParsing="false" onAction="#goToAddmovie" onMouseEntered="#addmovieGetDarker" onMouseExited="#addmovieReturnColor" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="add movie" textFill="WHITE" />
+            <Button fx:id="addShow" mnemonicParsing="false" onAction="#goToAddshow" onMouseEntered="#addshowDarker" onMouseExited="#addshowOriginal" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="add show" textFill="WHITE" />
+            <Button fx:id="viewBooking" mnemonicParsing="false" onAction="#goToViewbookings" onMouseEntered="#viewbookingsDarker" onMouseExited="#viewbookingsOriginal" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="view bookings" textFill="WHITE" />
+            <Button fx:id="viewShows" mnemonicParsing="false" onAction="#goToViewshows" onMouseEntered="#viewshowsDarker" onMouseExited="#viewshowsOriginal" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="view shows" textFill="WHITE" />
+            <Button fx:id="cancelBookings" mnemonicParsing="false" onAction="#goToCancelbookings" onMouseEntered="#cancelDarker" onMouseExited="#cancelOriginal" prefHeight="53.0" prefWidth="191.0" style="-fx-background-color: #821458;" text="cancel bookings" textFill="WHITE" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBackLogin" onMouseEntered="#backButtonDarker" onMouseExited="#backButtonOriginal" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #821458;" text="back" textFill="WHITE" />
+         </children>
+      </VBox>
+      <Label layoutX="425.0" layoutY="37.0" prefHeight="35.0" prefWidth="191.0" text="Admin Dashboard" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

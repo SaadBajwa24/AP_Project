@@ -114,6 +114,24 @@ public class Booking {
 		}
 	}
 	@SuppressWarnings("rawtypes")
+	public boolean GetBookingId(int tempbookingid)
+	{
+			Configuration cfg = new Configuration();
+			cfg.configure().addAnnotatedClass(Booking.class);
+			SessionFactory sf=cfg.buildSessionFactory();
+			Session session=sf.openSession();
+			List Booking=session.createQuery("from Booking").list();
+			for(Iterator iterator=((java.util.List) Booking).iterator();iterator.hasNext();)
+			{
+				Booking b1=(Booking) iterator.next();
+				if(tempbookingid==b1.getBookingid())
+				{
+					return true;
+				}
+			}
+			return false;
+	}
+	@SuppressWarnings("rawtypes")
 	public ObservableList<Booking> GetBookingList()
 	{
 		ObservableList<Booking> templist=FXCollections.observableArrayList();
@@ -172,6 +190,7 @@ public class Booking {
 		trans.commit();
 	}
 	
+	@SuppressWarnings("unused")
 	public static void main(String args[])
 	{
 		/*Configuration cfg = new Configuration();
@@ -192,6 +211,9 @@ public class Booking {
 			System.out.println("temp is: " + temp);
 		}*/
 		Booking b1=new Booking();
+		//if(b1.GetBookingId(8))
+			//System.out.println("Hello");
+		//b1.GetBookingId(8);
 		//b1.DeleteBooking(7);
 		//b1.DeleteBooking(2);
 		//b1.DeleteBooking(3);
@@ -201,7 +223,7 @@ public class Booking {
 		//b1.AddBooking(7,8,9);
 		//b1.GetAllBooking();*/
 		//b1.UpdateBooking(2,12,10);
-		b1.GetAllBooking();
+		//b1.GetAllBooking();
 		//b1.DeleteBooking(4);
 		//b1.GetAllBooking();
 		//b1.GetAllBooking();

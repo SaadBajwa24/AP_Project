@@ -3,3 +3,4 @@
 3,khel khel main,7.6,19-11-2021,2hr 11min,drama/historical
 4,no time to die,7.5,30-10-2021,2hr 43min,action/adventure
 5,kahay dil jidhar,7.5,20-3-2021,2hr 02min,action
+6,don't look up,7.4,05-12-2021,2hr 25min,comedy/disaster

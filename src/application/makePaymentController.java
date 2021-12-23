@@ -9,6 +9,8 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
+import javafx.scene.control.TextField;
 
 @SuppressWarnings("exports")
 public class makePaymentController {
@@ -25,6 +27,10 @@ public class makePaymentController {
 	private Button showBookings;
 	@FXML
 	private Button backButton;
+	@FXML
+    private Text msgLabel;
+	@FXML
+    private TextField bookingidBox;
 
 	//for book button
 	 
@@ -58,6 +64,23 @@ public class makePaymentController {
      void makePaymentOriginal(MouseEvent event) {	//button goes back to original color when mouse leaves node
 		 makePayment.setStyle("-fx-background-color: #821458;");
 	 }
+	 
+	//to go to final payment
+		@FXML
+	    void goToFinalPayment(ActionEvent event) throws IOException {
+			Booking b1=new Booking();
+			int tempvalue=Integer.parseInt(bookingidBox.getText());
+			if(b1.GetBookingId(tempvalue)) {
+				 msgLabel.setText("");
+				 Main m=new Main();
+				 m.changeScenes("finalPayment.fxml");
+				 
+			 }
+			 else {
+				bookingidBox.clear();
+				msgLabel.setText("booking id doesnt exist");
+			 }
+	    }
 	 
 	 
 	 

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="850.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.addMovieController">
+   <children>
+      <VBox prefHeight="500.0" prefWidth="191.0" style="-fx-background-color: #821458;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="81.0" prefWidth="191.0" />
+            <Button fx:id="addMovie" mnemonicParsing="false" onMouseEntered="#addmovieGetDarker" onMouseExited="#addmovieReturnColor" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="add movie" textFill="WHITE" />
+            <Button fx:id="addShow" mnemonicParsing="false" onAction="#goToAddshow" onMouseEntered="#addshowDarker" onMouseExited="#addshowOriginal" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="add show" textFill="WHITE" />
+            <Button fx:id="viewBooking" mnemonicParsing="false" onAction="#goToViewbookings" onMouseEntered="#viewbookingsDarker" onMouseExited="#viewbookingsOriginal" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="view bookings" textFill="WHITE" />
+            <Button fx:id="viewShows" mnemonicParsing="false" onAction="#goToViewshows" onMouseEntered="#viewshowsDarker" onMouseExited="#viewshowsOriginal" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="view shows" textFill="WHITE" />
+            <Button fx:id="cancelBookings" mnemonicParsing="false" onAction="#goToCancelbookings" onMouseEntered="#cancelDarker" onMouseExited="#cancelOriginal" prefHeight="53.0" prefWidth="191.0" style="-fx-background-color: #821458;" text="cancel bookings" textFill="WHITE" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBackLogin" onMouseEntered="#backButtonDarker" onMouseExited="#backButtonOriginal" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #821458;" text="back" textFill="WHITE" />
+         </children>
+      </VBox>
+      <Label layoutX="459.0" layoutY="32.0" prefHeight="31.0" prefWidth="161.0" text="Add Movie" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="idTextbox" layoutX="309.0" layoutY="121.0" promptText="enter movie id" />
+      <TextField fx:id="nameTextbox" layoutX="309.0" layoutY="194.0" promptText="enter movie name" />
+      <TextField fx:id="ratingTextbox" layoutX="309.0" layoutY="275.0" promptText="enter movie rating" />
+      <TextField fx:id="releasedateTextbox" layoutX="576.0" layoutY="121.0" promptText="enter movie realease date" />
+      <TextField fx:id="durationTextbox" layoutX="576.0" layoutY="200.0" promptText="enter movie duration" />
+      <TextField fx:id="genreTextbox" layoutX="576.0" layoutY="275.0" promptText="enter movie genre" />
+      <Button fx:id="confirm" layoutX="455.0" layoutY="384.0" mnemonicParsing="false" onAction="#confirmAddMovie" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: lime;" text="confirm" textFill="WHITE" />
+      <Label layoutX="272.0" layoutY="124.0" text="ID" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="262.0" layoutY="197.0" text="name" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="261.0" layoutY="278.0" text="rating" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="493.0" layoutY="124.0" text="release date" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="504.0" layoutY="203.0" text="duration" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="522.0" layoutY="278.0" text="genre" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
