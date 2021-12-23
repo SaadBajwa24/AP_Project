@@ -1,5 +1,6 @@
 package application;
 
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,7 +28,6 @@ public class Booking {
 		return "Booking [bookingid=" + bookingid + ", showid=" + showid + ", customerid=" + customerid + ", seats="
 				+ seats + "]";
 	}
-
 	private int showid;
 	private int customerid;
 	private int seats;
@@ -129,7 +129,7 @@ public class Booking {
 		}
 		return templist;
 	}
-	public void AddBooking(int showid2,int movieid2,int seats)
+	public void AddBooking(int showid2,int customerid2,int seats) throws ClassNotFoundException, SQLException
 	{
 		Configuration cfg = new Configuration();
 		cfg.configure().addAnnotatedClass(Booking.class);
@@ -138,10 +138,13 @@ public class Booking {
 		Transaction trans=session.beginTransaction();
 		Booking b1=new Booking();
 		b1.setShowid(showid2);
-		b1.setCustomerid(movieid2);
+		b1.setCustomerid(customerid2);
 		b1.setSeats(seats);
 		session.save(b1);
 		trans.commit();
+		Show obj=new Show();
+		int newseats=obj.GetShowSeats(showid2)-seats;
+		obj.UpdateShowSeats(newseats,showid2);
 	}
 	public void UpdateBooking(int bookingid2,int showid2,int customerid2,int seat)
 	{
@@ -189,6 +192,10 @@ public class Booking {
 			System.out.println("temp is: " + temp);
 		}*/
 		Booking b1=new Booking();
+		//b1.DeleteBooking(7);
+		//b1.DeleteBooking(2);
+		//b1.DeleteBooking(3);
+		//b1.DeleteBooking(6);
 		//b1.AddBooking(1,7,1);
 		//b1.AddBooking(4,5,6);
 		//b1.AddBooking(7,8,9);

@@ -50,7 +50,6 @@ public class Admin {
 		m1.EditMovie(old, newdata);
 		System.out.println("Edited Movie");
 	}
-	
 	@SuppressWarnings("unused")
 	public static void main(String args[])
 	{

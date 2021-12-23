@@ -2,67 +2,78 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Iterator;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.text.Text;
 
-import javafx.application.Platform;
-
-@SuppressWarnings("unused")
-public class controller implements Initializable{
+@SuppressWarnings("exports")
+public class showBookingsController implements Initializable{
 	
-	private Admin admin;
-	private Customer customer;
-	private Movie movie;
-	private Show show;
-	 
-	 
-	 //*******************************DASHBORD****************************************//
+	
+	@FXML
+	private Button bookButton;
+	@FXML
+	private Button showMovieButton;
+	@FXML
+	private Button showShows;
+	@FXML
+	private Button makePayment;
+	@FXML
+	private Button backButton;
+	@FXML
+	private Button showBookings;
+	
+	 @FXML
+	 private TableView<Booking> BookingTable;
 	 
 	 @FXML
-	 private Button bookButton;
+	 private TableColumn<Booking,Integer> bookingid1;
 	 
 	 @FXML
-	 private Button cancel;
+	 private TableColumn<Booking,Integer> showid1;
 
 	 @FXML
-	 private Button makePayment;
+	 private TableColumn<Booking,Integer> customerid1;
 
 	 @FXML
-	 private Button showMovieButton;
-	 
-	 @FXML
-	 private Button backButton;
-	 
-	 @FXML
-	 private BorderPane borderpane;
-	 
-	 @FXML
-	 private Button showBookings;
+	 private TableColumn<Booking,Integer> seats1;
 
-	 //for book button
+	 ObservableList<Booking> templist=FXCollections.observableArrayList();
+	 
+	 @Override
+	 public void initialize(URL url, ResourceBundle rb) 
+	 {		  
+			 bookingid1.setCellValueFactory(new PropertyValueFactory<Booking,Integer>("bookingid"));
+			 showid1.setCellValueFactory(new PropertyValueFactory<Booking,Integer>("showid"));
+			 customerid1.setCellValueFactory(new PropertyValueFactory<Booking,Integer>("customerid"));
+			 seats1.setCellValueFactory(new PropertyValueFactory<Booking,Integer>("seats"));
+			 Booking b1=new Booking();
+			 templist=b1.GetBookingList();
+			 BookingTable.setItems(templist);	 
+	 }
+	 
+	 //for show  bookings
+		// Event Listener on Button[#showBookings].onMouseEntered
+		@FXML
+		public void showBGoDarker(MouseEvent event) {
+			showBookings.setStyle("-fx-background-color: #410a2e;");
+		}
+		// Event Listener on Button[#showBookings].onMouseExited
+		@FXML
+		public void showBgoOriginal(MouseEvent event) {
+			showBookings.setStyle("-fx-background-color: #821458;");
+		}
+	
+	//for book button
 	 
 	 @FXML
 	 void bookButtonGetDarker(MouseEvent event) {	//button gets darker when highlighted
@@ -80,7 +91,8 @@ public class controller implements Initializable{
 		 Main m=new Main();
 		 m.changeScenes("booking.fxml");
 	 }
- 
+
+	 /*
 	 //for cancel button
 	 
 	 @FXML
@@ -97,7 +109,26 @@ public class controller implements Initializable{
 	 void goToCancelBooking(ActionEvent event) throws IOException {
 		 Main m=new Main();
 		 m.changeScenes("cancelBooking.fxml");
-	 }	 
+	 }
+	 */
+	 
+		//for show Shows button
+		
+		@FXML
+		void showShowsButtonGetDarker(MouseEvent event) {	//button gets darker when highlighted
+			showShows.setStyle("-fx-background-color: #410a2e;");
+		}
+		
+		@FXML
+		void showShowsButtonOriginal(MouseEvent event) {	//button goes back to original color when mouse leaves node
+			showShows.setStyle("-fx-background-color: #821458;");
+		}
+		
+		@FXML
+		void goToShowShows(ActionEvent event) throws IOException {
+			 Main m=new Main();
+			 m.changeScenes("showShows.fxml");
+		}
 	 
 	 //for make payment button
 
@@ -120,26 +151,6 @@ public class controller implements Initializable{
 	 //for show movies button
 
 	 @FXML
-	 private TableView<Movie> MovieTable;
-	 
-	 @FXML
-	 private TableColumn<Movie,String> movieduration;
-
-	 @FXML
-	 private TableColumn<Movie,String> moviegenre;
-
-	 @FXML
-	 private TableColumn<Movie,String> moviename2;
-
-	 @FXML
-	 private TableColumn<Movie,String> movierating;
-
-	 @FXML
-	 private TableColumn<Movie,String> moviereleasedate;
-	 
-	 ObservableList<Movie> oblist=FXCollections.observableArrayList();
-	 
-	 @FXML
 	 void showButtonDarker(MouseEvent event) {	//button gets darker when highlighted
 		 showMovieButton.setStyle("-fx-background-color: #410a2e;");
 	 }
@@ -151,65 +162,35 @@ public class controller implements Initializable{
 	 
 	 @FXML
 	 void goToShowMovies(ActionEvent event) throws IOException {
-		 
 		 Main m=new Main();
 		 m.changeScenes("showMovies.fxml");
 	 }
 	 
-	 @Override
-	 public void initialize(URL url, ResourceBundle rb) 
-	 {
-		 try {
-			 moviename2.setCellValueFactory(new PropertyValueFactory<Movie,String>("moviename"));
-			 movierating.setCellValueFactory(new PropertyValueFactory<Movie,String>("rating"));
-			 moviereleasedate.setCellValueFactory(new PropertyValueFactory<Movie,String>("releasedate"));
-			 movieduration.setCellValueFactory(new PropertyValueFactory<Movie,String>("duration"));
-			 moviegenre.setCellValueFactory(new PropertyValueFactory<Movie,String>("genre"));
-			 Movie m1=new Movie();
-			 oblist=m1.GetMovieList();
-			 MovieTable.setItems(oblist); 
-		 }
-		 catch (Exception e1)
-		 {
-		 }
+	//for back button
+	 @FXML
+	 void backButtonOriginal(MouseEvent event) {	//button gets darker when highlighted
+		 backButton.setStyle("-fx-background-color: #821458;");
+			 
 	 }
+
+	@FXML
+	void backButtonDarker(MouseEvent event) {	//button goes back to original color when mouse leaves node
+		backButton.setStyle("-fx-background-color: #410a2e;");
+	}
+		  
+	@FXML
+	void goBackLogin(ActionEvent event) throws IOException {
+		 Main m=new Main();
+		 m.changeScenes("login.fxml");
+	 }
+	
 	 
-	 @FXML
-	 void showBgoOriginal(MouseEvent event) {
-		 showBookings.setStyle("-fx-background-color: #821458;");
-	 }
-
-	 @FXML
-	 void showBGoDarker(MouseEvent event) {
-		 showBookings.setStyle("-fx-background-color: #410a2e;");
-	 }
-
+	
+	
 	 @FXML
 	 void goToShowBookings(ActionEvent event) throws IOException {
 		 Main m=new Main();
 		 m.changeScenes("showBookings.fxml");
 	 }
 	 
-	 
-	 //for back button
-	 @FXML
-	 void backButtonOriginal(MouseEvent event) {	//button gets darker when highlighted
-		 backButton.setStyle("-fx-background-color: #821458;");
-		 
-	 }
-
-	 @FXML
-	 void backButtonDarker(MouseEvent event) {	//button goes back to original color when mouse leaves node
-		 backButton.setStyle("-fx-background-color: #410a2e;");
-	 }
-
-	 @FXML
-	 void goBackLogin(ActionEvent event) throws IOException {
-		 Main m=new Main();
-		 m.changeScenes("login.fxml");
-	 }
-	 
-
 }
-
-

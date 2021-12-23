@@ -9,30 +9,32 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.showBookingsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.showShowsController">
    <children>
       <VBox prefHeight="500.0" prefWidth="191.0" style="-fx-background-color: #821458;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane prefHeight="81.0" prefWidth="191.0" />
             <Button fx:id="bookButton" mnemonicParsing="false" onAction="#goToBook" onMouseExited="#bookButtonReturnColor" onMouseMoved="#bookButtonGetDarker" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="book" textFill="WHITE" />
             <Button fx:id="showMovieButton" mnemonicParsing="false" onAction="#goToShowMovies" onMouseExited="#showButtonOriginal" onMouseMoved="#showButtonDarker" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="show movies" textFill="WHITE" />
-			<Button fx:id="showShows" mnemonicParsing="false" onAction="#goToShowShows" onMouseExited="#showShowsButtonOriginal" onMouseMoved="#showShowsButtonGetDarker" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="view shows" textFill="WHITE" />    
-			<Button fx:id="makePayment" mnemonicParsing="false" onAction="#goToMakePayment" onMouseExited="#makePaymentOriginal" onMouseMoved="#makePaymentDarker" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="make payment" textFill="WHITE" />
+            <Button fx:id="showShows" mnemonicParsing="false" onMouseExited="#showShowsButtonOriginal" onMouseMoved="#showShowsButtonGetDarker" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="show shows" textFill="WHITE" />
+            <Button fx:id="makePayment" mnemonicParsing="false" onAction="#goToMakePayment" onMouseExited="#makePaymentOriginal" onMouseMoved="#makePaymentDarker" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="make payment" textFill="WHITE" />
             <Button fx:id="showBookings" mnemonicParsing="false" onAction="#goToShowBookings" onMouseEntered="#showBGoDarker" onMouseExited="#showBgoOriginal" prefHeight="53.0" prefWidth="191.0" style="-fx-background-color: #821458;" text="show bookings" textFill="WHITE" />
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBackLogin" onMouseExited="#backButtonOriginal" onMouseMoved="#backButtonDarker" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #821458;" text="back" textFill="WHITE" />
          </children>
       </VBox>
-      <Label layoutX="450.0" layoutY="27.0" text="show bookings" textFill="WHITE">
+      <Label layoutX="460.0" layoutY="32.0" text="view shows" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <TableView fx:id="BookingTable" layoutX="191.0" layoutY="78.0" prefHeight="423.0" prefWidth="659.0">
+      <TableView fx:id="showShowsTable" layoutX="191.0" layoutY="73.0" prefHeight="427.0" prefWidth="659.0">
         <columns>
-          <TableColumn fx:id="bookingid1" prefWidth="151.3333282470703" text="booking id" />
-          <TableColumn fx:id="showid1" prefWidth="180.66671752929688" text="show id" />
-            <TableColumn fx:id="customerid1" prefWidth="169.33331298828125" text="customer cnic" />
-            <TableColumn fx:id="seats1" prefWidth="156.66668701171875" text="no of seats" />
+          <TableColumn fx:id="showid" prefWidth="89.0" text="show id" />
+            <TableColumn fx:id="theatreid" prefWidth="119.0" text="theatre id" />
+          <TableColumn fx:id="showMovieid" prefWidth="116.0" text="movie id" />
+             <TableColumn fx:id="showtime" prefWidth="105.0" text="show time" />
+            <TableColumn fx:id="price" prefWidth="121.0" text="ticket price" />
+            <TableColumn fx:id="numOfSeats" prefWidth="108.0" text="seats left" />
         </columns>
       </TableView>
    </children>

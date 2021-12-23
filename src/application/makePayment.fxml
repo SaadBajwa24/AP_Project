@@ -7,15 +7,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.makePaymentController">
    <children>
       <VBox prefHeight="500.0" prefWidth="191.0" style="-fx-background-color: #821458;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane prefHeight="81.0" prefWidth="191.0" />
             <Button fx:id="bookButton" mnemonicParsing="false" onAction="#goToBook" onMouseExited="#bookButtonReturnColor" onMouseMoved="#bookButtonGetDarker" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="book" textFill="WHITE" />
             <Button fx:id="showMovieButton" mnemonicParsing="false" onAction="#goToShowMovies" onMouseExited="#showButtonOriginal" onMouseMoved="#showButtonDarker" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="show movies" textFill="WHITE" />
-            <Button fx:id="cancel" mnemonicParsing="false" onAction="#goToCancelBooking" onMouseExited="#cancelButtonOriginal" onMouseMoved="#cancelButtonGetDarker" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="cancel booking" textFill="WHITE" />
-            <Button fx:id="makePayment" mnemonicParsing="false" onAction="#goToMakePayment" onMouseExited="#makePaymentOriginal" onMouseMoved="#makePaymentDarker" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="make payment" textFill="WHITE" />
+			<Button fx:id="showShows" mnemonicParsing="false" onAction="#goToShowShows" onMouseExited="#showShowsButtonOriginal" onMouseMoved="#showShowsButtonGetDarker" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="view shows" textFill="WHITE" />            <Button fx:id="makePayment" mnemonicParsing="false" onAction="#goToMakePayment" onMouseExited="#makePaymentOriginal" onMouseMoved="#makePaymentDarker" prefHeight="66.0" prefWidth="205.0" style="-fx-background-color: #821458;" text="make payment" textFill="WHITE" />
             <Button fx:id="showBookings" mnemonicParsing="false" onAction="#goToShowBookings" onMouseEntered="#showBGoDarker" onMouseExited="#showBgoOriginal" prefHeight="53.0" prefWidth="191.0" style="-fx-background-color: #821458;" text="show bookings" textFill="WHITE" />
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBackLogin" onMouseExited="#backButtonOriginal" onMouseMoved="#backButtonDarker" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: #821458;" text="back" textFill="WHITE" />
          </children>
